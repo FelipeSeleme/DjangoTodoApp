@@ -1,19 +1,140 @@
-<h3>To Do</h3>
+<link
+	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous"
+/>
 
-<form method="POST" action="/">
-	{% csrf_token %} {{form.title}}
-	<input type="submit" name="Create Task" />
-</form>
+<style>
+	body {
+		background-color: #f4f4f9;
+		color: #333;
+		font-family: Arial, sans-serif;
+	}
 
-{% for task in tasks %}
-<div>
-	<a href="{% url 'update_task' task.id %}">Update</a>
-	<a href="{% url 'delete' task.id %}">Delete</a>
+	input {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
 
-	{% if task.complete == True %}
-	<strike>{{task}}</strike>
-	{% else %}
-	<span>{{task}}</span>
-	{% endif %}
+	input::placeholder {
+		color: #888;
+	}
+
+	.submit {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		padding: 10px;
+		cursor: pointer;
+	}
+
+	.submit:hover {
+		background-color: #0056b3;
+	}
+
+	.center-column {
+		width: 600px;
+		margin: 20px auto;
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 6px;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	.item-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #f8f9fa;
+		margin: 10px 0;
+		padding: 15px;
+		border: 1px solid #dee2e6;
+		border-radius: 4px;
+		color: #495057;
+		font-size: 16px;
+	}
+
+	.item-row:hover {
+		background-color: #e9ecef;
+	}
+
+	.btn-danger {
+		background-color: #dc3545;
+		border-color: #dc3545;
+		color: #fff;
+		border-radius: 4px;
+	}
+
+	.btn-danger:hover {
+		background-color: #bd2130;
+		border-color: #b21f2d;
+	}
+
+	.btn-info {
+		background-color: #17a2b8;
+		border-color: #17a2b8;
+		color: #fff;
+		border-radius: 4px;
+	}
+
+	.btn-info:hover {
+		background-color: #117a8b;
+		border-color: #10707f;
+	}
+
+	.btn-danger .fa-trash {
+		margin-right: 0;
+	}
+</style>
+
+<div class="center-column">
+	<form method="POST" action="/">
+		{% csrf_token %}
+		<input
+			type="text"
+			name="title"
+			placeholder="Adicionar novo item..."
+			class="form-control"
+		/>
+		<input
+			class="btn submit"
+			type="submit"
+			name="Create Task"
+			value="Adicionar"
+		/>
+	</form>
+
+	<div class="todo-list">
+		{% for task in tasks %}
+		<div class="item-row">
+			<div>
+				{% if task.complete == True %}
+				<strike>{{task}}</strike>
+				{% else %}
+				<span>{{task}}</span>
+				{% endif %}
+			</div>
+			<div>
+				<a
+					class="btn btn-sm btn-info"
+					href="{% url 'update_task' task.id %}"
+					>Editar</a
+				>
+				<a
+					class="btn btn-sm btn-danger"
+					href="{% url 'delete' task.id %}"
+					><i class="fa fa-trash"></i
+				></a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
-{% endfor %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
