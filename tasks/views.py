@@ -8,7 +8,6 @@ from .models import *
 def index(request):
     tasks = Task.objects.all()
 
-    context = {
-        'tasks': tasks
-    }
+    form = TaskForm()
+    context = {'tasks': tasks, 'form': form}
     return render(request, 'tasks/list.html', context)
