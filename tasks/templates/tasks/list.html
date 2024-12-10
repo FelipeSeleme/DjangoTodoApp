@@ -2,7 +2,7 @@
 
 <form mothod="POST" action="/">
 	{% csrf_token %} {{form.title}}
-	<input type="submit" name="Adicionar Item" />
+	<input type="submit" name="Create Task" />
 </form>
 
 {% for task in tasks %}
