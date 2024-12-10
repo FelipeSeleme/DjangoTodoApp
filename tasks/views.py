@@ -17,5 +17,5 @@ def index(request):
             form.save()
         return redirect('/')
 
-    context = {'tasks': tasks, 'form': form}
+    context = {'tasks':tasks, 'form':form}
     return render(request, 'tasks/list.html', context)
