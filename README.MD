@@ -12,6 +12,9 @@ Este é um aplicativo de gerenciamento de tarefas simples, desenvolvido com Djan
 ## Funcionalidades
 
 -   **Criar Tarefas**: Adicionar tarefas com título e status.
+    ![Lista de Tarefas](images/list.png)
 -   **Editar Tarefas**: Atualizar o título e o status de uma tarefa (marcar como concluída ou não).
+    ![Editar Tarefas](images/edit.png)
 -   **Visualizar Tarefas**: Listar todas as tarefas com a opção de visualizá-las em detalhes.
 -   **Marcar Tarefas como Concluídas**: Marcar ou desmarcar uma tarefa como concluída usando um checkbox.
+    ![Excluir Tarefas](images/delete.png)
