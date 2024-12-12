@@ -84,13 +84,14 @@
 				id="complete"
 				{%
 				if
-				form.complete.value
+				form.instance.complete|default:False
 				%}
 				checked
 				{%
 				endif
 				%}
 			/>
+
 			<label for="complete" class="m-0">Marcar como concluído</label>
 		</div>
 
