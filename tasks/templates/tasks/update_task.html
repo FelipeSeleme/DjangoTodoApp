@@ -1,6 +1,59 @@
-<h3>Update Task</h3>
+<link
+	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous"
+/>
 
-<form method="POST" action="">
-	{% csrf_token %} {{form}}
-	<input type="submit" name="Update Task" />
-</form>
+<style>
+	body {
+		background-color: #f4f4f9;
+		color: #333;
+		font-family: Arial, sans-serif;
+	}
+
+	.center-column {
+		width: 600px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 6px;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+		text-align: center;
+	}
+
+	input {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	.submit {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		padding: 10px 20px;
+		cursor: pointer;
+	}
+
+	.submit:hover {
+		background-color: #0056b3;
+	}
+</style>
+
+<div class="center-column">
+	<h3>Atualizar Tarefa</h3>
+	<form method="POST" action="">
+		{% csrf_token %} {{form.as_p}}
+		<input
+			class="btn submit"
+			type="submit"
+			name="Update Task"
+			value="Atualizar"
+		/>
+	</form>
+</div>

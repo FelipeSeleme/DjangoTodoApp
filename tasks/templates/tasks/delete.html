@@ -1,8 +1,80 @@
-<p>Tem certeza que quer deletar "{{item}}"?</p>
+<link
+	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous"
+/>
 
-<a href="{% url 'list' %}">Cancelar</a>
+<style>
+	body {
+		background-color: #f4f4f9;
+		color: #333;
+		font-family: Arial, sans-serif;
+	}
 
-<form method="POST" action="">
-	{% csrf_token %}
-	<input type="submit" name="Confirma" />
-</form>
+	.center-column {
+		width: 600px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 6px;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+		text-align: center;
+	}
+
+	.button-group {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		margin-top: 20px;
+	}
+
+	.button-group .btn {
+		width: 120px;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.submit {
+		background-color: #dc3545;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.submit:hover {
+		background-color: #bd2130;
+	}
+
+	.cancel {
+		background-color: #6c757d;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		text-decoration: none;
+		cursor: pointer;
+		display: inline-block;
+	}
+
+	.cancel:hover {
+		background-color: #5a6268;
+	}
+</style>
+
+<div class="center-column">
+	<h3>Excluir Item</h3>
+	<p>Tem certeza de que deseja excluir "{{item}}"?</p>
+	<div class="button-group">
+		<form method="POST" action="" style="margin: 0">
+			{% csrf_token %}
+			<input
+				class="btn submit"
+				type="submit"
+				name="Delete Task"
+				value="Excluir"
+			/>
+		</form>
+		<a href="{% url 'list' %}" class="btn cancel">Cancelar</a>
+	</div>
+</div>
