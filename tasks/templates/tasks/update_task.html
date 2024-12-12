@@ -76,30 +76,21 @@
 			placeholder="Digite o novo título..."
 			class="form-control"
 		/>
+		<p>Valor de complete: {{ form.instance.complete }}</p>
 
 		<div class="checkbox-row">
-			<input
-				type="checkbox"
-				name="complete"
-				id="complete"
-				{%
-				if
-				form.instance.complete|default:False
-				%}
-				checked
-				{%
-				endif
-				%}
-			/>
-
+			<input type="checkbox" name="complete" id="complete" 
+				{% if form.instance.complete == True %}
+					checked
+				{% endif %} />
 			<label for="complete" class="m-0">Marcar como concluído</label>
 		</div>
-
+		
 		<input
 			class="btn submit mt-3"
 			type="submit"
 			name="Update Task"
 			value="Atualizar"
-		/>
+		/></div>
 	</form>
 </div>
