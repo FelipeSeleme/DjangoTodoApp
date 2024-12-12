@@ -114,10 +114,10 @@
 		{% for task in tasks %}
 		<div class="item-row">
 			<div>
-				{% if task.complete == True %}
-				<strike>{{task}}</strike>
+				{% if task.complete %}
+				<strike>{{ task.title }}</strike>
 				{% else %}
-				<span>{{task}}</span>
+				<span>{{ task.title }}</span>
 				{% endif %}
 			</div>
 			<div>

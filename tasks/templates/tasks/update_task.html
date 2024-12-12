@@ -19,7 +19,6 @@
 		background-color: #fff;
 		border-radius: 6px;
 		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-		text-align: center;
 	}
 
 	input {
@@ -43,14 +42,60 @@
 	.submit:hover {
 		background-color: #0056b3;
 	}
+
+	.checkbox-row {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 15px;
+		width: auto;
+	}
+
+	.checkbox-row input[type="checkbox"] {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+
+	.checkbox-row label {
+		margin: 0;
+		white-space: nowrap;
+	}
+
+	.form-control {
+		width: 100%;
+	}
 </style>
 
 <div class="center-column">
-	<h3>Atualizar Tarefa</h3>
+	<h3 class="text-center">Editar Item</h3>
 	<form method="POST" action="">
-		{% csrf_token %} {{form.as_p}}
+		{% csrf_token %}
 		<input
-			class="btn submit"
+			type="text"
+			name="title"
+			value="{{ form.title.value|default:'' }}"
+			placeholder="Digite o novo título..."
+			class="form-control"
+		/>
+
+		<div class="checkbox-row">
+			<input
+				type="checkbox"
+				name="complete"
+				id="complete"
+				{%
+				if
+				form.complete.value
+				%}
+				checked
+				{%
+				endif
+				%}
+			/>
+			<label for="complete" class="m-0">Marcar como concluído</label>
+		</div>
+
+		<input
+			class="btn submit mt-3"
 			type="submit"
 			name="Update Task"
 			value="Atualizar"
